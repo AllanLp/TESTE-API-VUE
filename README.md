@@ -95,7 +95,7 @@ O HTML do componente é responsável por renderizar a interface com os seguintes
 
  - Flask: Framework para desenvolvimento do servidor em Python.
 
-## Exemplo de Funcionamento da API
+## Exemplo de Funcionamento da API com Interface WEB em VUE.js
 
 Abaixo estão imagens demonstrando o funcionamento da aplicação e os filtros em ação:
 
