@@ -1,0 +1,7 @@
+EXECUTE PARA INSTALAR O QUE É NECESSÁRIO
+
+pip install -r requirements.txt
+
+
+CASO ADD MAIS LIBS = pip freeze > requirements.txt
+
