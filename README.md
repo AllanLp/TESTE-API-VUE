@@ -1,6 +1,6 @@
 # TESTE DE API
 
-Este repositório contém um teste de API que inclui o desenvolvimento de uma interface web utilizando Vue.js que interage com um servidor em Python para realizar tarefas específicas.
+Este repositório contém um teste de API que inclui o desenvolvimento de uma interface web utilizando Vue.js que interage com um servidor em Python para realizar buscas pela razão social das Operadoras Ativas na ANS no formato CSV registradas no arquivo Relatorio_cadop.csv disponível em [Dados cadastrais das Operadoras Ativas na ANS]([URL_DO_LINK](https://dadosabertos.ans.gov.br/FTP/PDA/operadoras_de_plano_de_saude_ativas/)).
 
 ## Descrição
 
