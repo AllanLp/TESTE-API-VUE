@@ -30,20 +30,21 @@ Siga as instruções abaixo para configurar e executar o projeto:
 
     - Certifique-se de que o Python está instalado.
 
-    - Entre na pasta backend e execute: pip install flask
+    - Entre na pasta backend e execute: `pip install flask`
 
  - Para o frontend
      
     - Certifique-se de que o Node.js e o npm estão instalados.
 
-    - Entre na pasta frontend e execute: pm install vue axios
+    - Entre na pasta frontend e execute: `pm install vue axios`
 
 
 ## Executando o Projeto
 
-Entre na pasta backend utilizando o terminal e execute : python server.py
+Entre na pasta backend utilizando o terminal e execute : `python server.py`
 
-Entre na pasta frontend utilizando o terminal e execute : npm run serve
+Entre na pasta frontend utilizando o terminal e execute : `npm run serve`
+
 
 ## Testando a Aplicação
 
@@ -54,6 +55,21 @@ Entre na pasta frontend utilizando o terminal e execute : npm run serve
 - Importe a coleção do Postman fornecida.
 
 - Faça requisições às rotas configuradas e verifique os resultados.
+
+## API - Backend em Flask
+
+Esta API foi desenvolvida utilizando o framework Flask e tem como objetivo realizar buscas textuais em uma lista de cadastros de operadoras, retornando os registros mais relevantes.
+
+### Estrutura da API
+
+#### Endpoints
+
+- **`GET /operadoras`**:
+  - **Descrição**: Realiza uma busca textual na lista de cadastros de operadoras.
+  - **Parâmetros**:
+    - `query` (string): Texto a ser buscado nos registros de `Razao_Social`.
+  - **Retorno**:
+    - JSON contendo os 10 registros mais relevantes que correspondem à busca. Substitui valores `NaN` por `"Não informado"`.
 
 ## Dependências
 
