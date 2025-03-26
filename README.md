@@ -94,3 +94,15 @@ O HTML do componente é responsável por renderizar a interface com os seguintes
  - Python: Necessário para rodar o servidor backend.
 
  - Flask: Framework para desenvolvimento do servidor em Python.
+
+## Exemplo de Funcionamento da API
+
+Abaixo estão imagens demonstrando o funcionamento da aplicação e os filtros em ação:
+
+### Busca por Razão Social
+![Busca por Razão Social](img-readme/busca-razao-social.png)
+
+### Seleção de Ordenação
+![Seleção de Ordenação Ascendente](img-readme/ordenacaoasc.png)
+
+![Seleção de Ordenação Descendente](img-readme/ordenacaodesc.png)
