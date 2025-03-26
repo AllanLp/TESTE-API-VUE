@@ -70,6 +70,20 @@ Esta API foi desenvolvida utilizando o framework Flask e tem como objetivo reali
     - `query` (string): Texto a ser buscado nos registros de `Razao_Social`.
   - **Retorno**:
     - JSON contendo os 10 registros mais relevantes que correspondem à busca. Substitui valores `NaN` por `"Não informado"`.
+   
+## Frontend - Interface em Vue.js
+
+A interface web foi desenvolvida em Vue.js e permite aos usuários realizar buscas textuais de operadoras e exibir os resultados em cartões organizados.
+
+---
+
+### Estrutura do Componente
+
+#### Template
+O HTML do componente é responsável por renderizar a interface com os seguintes elementos:
+- **Campo de busca**: Input para a Razão Social da operadora.
+- **Botão de busca**: Dispara a consulta ao backend.
+- **Cartões**: Exibem as informações das operadoras retornadas pela API.
 
 ## Dependências
 
