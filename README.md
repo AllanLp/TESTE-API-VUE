@@ -1,1 +1,66 @@
-# TESTE-API-VUE
+# TESTE DE API
+
+Este repositório contém um teste de API que inclui o desenvolvimento de uma interface web utilizando Vue.js que interage com um servidor em Python para realizar tarefas específicas.
+
+## Descrição
+
+O objetivo deste projeto é:
+- Utilizar o CSV obtido no item 3.2. do teste para realizar buscas textuais na lista de cadastros de operadoras.
+- Implementar um servidor em Python com uma rota capaz de buscar os registros mais relevantes.
+- Demonstrar os resultados utilizando uma coleção no Postman.
+
+## Estrutura do Projeto
+
+- **backend**: Contém o código do servidor Python.
+- **frontend**: Contém a interface web desenvolvida em Vue.js.
+
+## Configuração do Ambiente
+
+Siga as instruções abaixo para configurar e executar o projeto:
+
+### Passos para Instalação
+
+1. Clone este repositório para sua máquina local:
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+
+2. Instale os pacotes necessários:
+
+ - Para o backend:
+
+    - Certifique-se de que o Python está instalado.
+
+    - Entre na pasta backend e execute: pip install flask
+
+ - Para o frontend
+     
+    - Certifique-se de que o Node.js e o npm estão instalados.
+
+    - Entre na pasta frontend e execute: pm install vue axios
+
+
+## Executando o Projeto
+
+Entre na pasta backend utilizando o terminal e execute : python server.py
+
+Entre na pasta frontend utilizando o terminal e execute : npm run serve
+
+## Testando a Aplicação
+
+- Interface Web: Use a interface web para interagir com o servidor e realizar buscas textuais.
+
+- Postman: Para testar diretamente as rotas do servidor:
+
+- Importe a coleção do Postman fornecida.
+
+- Faça requisições às rotas configuradas e verifique os resultados.
+
+## Dependências
+
+ - Vue.js: Framework JavaScript para desenvolvimento da interface web.
+
+ - Axios: Biblioteca JavaScript para realizar requisições HTTP.
+
+ - Python: Necessário para rodar o servidor backend.
+
+ - Flask: Framework para desenvolvimento do servidor em Python.

@@ -172,3 +172,19 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Geral
+.DS_Store
+Thumbs.db
+
+# Backend (Python)
+__pycache__/
+venv/
+*.pyc
+
+# Frontend (Vue.js)
+node_modules/
+dist/
+
+# Logs
+*.log
