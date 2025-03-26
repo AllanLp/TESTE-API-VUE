@@ -15,5 +15,7 @@
       "dom.iterable",
       "scripthost"
     ]
-  }
+  },
+  "include": ["src/**/*"],  // Inclui apenas arquivos da pasta 'src'
+  "exclude": ["node_modules"]  // Exclui arquivos desnecessários
 }
