@@ -1,6 +1,6 @@
 # TESTE DE API
 
-Este repositório contém um teste de API que inclui o desenvolvimento de uma interface web utilizando Vue.js que interage com um servidor em Python para realizar tarefas específicas.
+Este repositório contém um teste de API que inclui o desenvolvimento de uma interface web utilizando Vue.js que interage com um servidor em Python para realizar buscas pela razão social das Operadoras Ativas na ANS no formato CSV registradas no arquivo Relatorio_cadop.csv disponível em [Dados cadastrais das Operadoras Ativas na ANS](https://dadosabertos.ans.gov.br/FTP/PDA/operadoras_de_plano_de_saude_ativas/).
 
 ## Descrição
 
@@ -95,7 +95,7 @@ O HTML do componente é responsável por renderizar a interface com os seguintes
 
  - Flask: Framework para desenvolvimento do servidor em Python.
 
-## Exemplo de Funcionamento da API
+## Exemplo de Funcionamento da API com Interface WEB em VUE.js
 
 Abaixo estão imagens demonstrando o funcionamento da aplicação e os filtros em ação:
 
