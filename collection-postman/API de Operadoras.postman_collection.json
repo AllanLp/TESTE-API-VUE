@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "acf06fd0-5ea4-4f3a-9f1a-687cc549fc93",
+		"name": "API de Operadoras",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "43513653"
+	},
+	"item": [
+		{
+			"name": "Get sem Ordenação",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/operadoras?query=Unimed",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"operadoras"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Unimed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get com Ordenação",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/operadoras?query=Unimed&order_by=Cidade&order_dir=Ascendente",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"operadoras"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Unimed"
+						},
+						{
+							"key": "order_by",
+							"value": "Cidade"
+						},
+						{
+							"key": "order_dir",
+							"value": "Ascendente"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
