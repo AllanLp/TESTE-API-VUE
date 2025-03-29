@@ -106,7 +106,7 @@ Esta API foi desenvolvida utilizando o framework Flask e tem como objetivo reali
 #### 4. **Limitação de Requisições (Rate Limiting)**:
   - **Biblioteca utilizada**: `flask-limiter`.
   - **Descrição**: 
-    - Limite de 50 requisições por minuto para o endpoint `/operadoras`.
+    - Limite de 100 requisições por minuto para o endpoint `/operadoras`.
     - Protege contra abusos de uso ou ataques de força bruta.
 
 #### 5. **Logs Detalhados**:
