@@ -9,64 +9,57 @@
 		{
 			"name": "Get sem Ordenação",
 			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:5000/operadoras?query=Unimed",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"operadoras"
-					],
-					"query": [
-						{
-							"key": "query",
-							"value": "Unimed"
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "IjczNTRlZWI2N2QxYzRlMGNjZDQ1OWQ2YmVmODRmZmQyNDUxZTllNzMi.Z-gplQ.M6PbqGxBurFukRc6cy5Yb_BeuoQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"Unimed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
-				}
+					}
+				},
+				"url": "http://127.0.0.1:5000/operadoras"
 			},
 			"response": []
 		},
 		{
 			"name": "Get com Ordenação",
 			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "get_csrf_token",
+						"value": "IjczNTRlZWI2N2QxYzRlMGNjZDQ1OWQ2YmVmODRmZmQyNDUxZTllNzMi.Z-gplQ.M6PbqGxBurFukRc6cy5Yb_BeuoQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"Unimed\",\r\n    \"order_by\": \"Razao_Social\",\r\n    \"order_dir\": \"Ascendente\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:5000/operadoras"
+			},
+			"response": []
+		},
+		{
+			"name": "GET CSRF Token",
+			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:5000/operadoras?query=Unimed&order_by=Cidade&order_dir=Ascendente",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"operadoras"
-					],
-					"query": [
-						{
-							"key": "query",
-							"value": "Unimed"
-						},
-						{
-							"key": "order_by",
-							"value": "Cidade"
-						},
-						{
-							"key": "order_dir",
-							"value": "Ascendente"
-						}
-					]
-				}
+				"url": "http://127.0.0.1:5000/get_csrf_token"
 			},
 			"response": []
 		}

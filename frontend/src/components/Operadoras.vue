@@ -24,38 +24,20 @@
             <!-- Select para Coluna de Ordenação -->
             <div class="filter-item">
               <label for="order_by" class="filter-label">Ordenar por</label>
-              <multiselect 
-                id="order_by" 
-                v-model="order_by" 
-                :options="orderOptions" 
-                placeholder="Selecione a Ordenação"
-                :searchable="true" 
-                :close-on-select="true" 
-                :clear-on-select="false" 
-                label="label" 
-                track-by="value"
-                aria-label=""
-                :show-labels="false"
-                class="styled-select"></multiselect>
+              <multiselect id="order_by" v-model="order_by" :options="orderOptions" placeholder="Selecione a Ordenação"
+                :searchable="true" :close-on-select="true" :clear-on-select="false" label="label" track-by="value"
+                aria-label="" :show-labels="false" class="styled-select"></multiselect>
             </div>
 
             <!-- Select para Direção da Ordenação -->
             <div class="filter-item">
               <label for="order_dir" class="filter-label">Tipo de Ordenação</label>
-              <multiselect 
-                id="order_dir" 
-                v-model="order_dir" 
-                :options="orderDirDisplayOptions"
-                placeholder="Tipo de Ordenação" 
-                :searchable="true" 
-                :close-on-select="true" 
-                :clear-on-select="false"
-                aria-label=""
-                :show-labels="false"
-                class="styled-select"></multiselect>
+              <multiselect id="order_dir" v-model="order_dir" :options="orderDirDisplayOptions"
+                placeholder="Tipo de Ordenação" :searchable="true" :close-on-select="true" :clear-on-select="false"
+                aria-label="" :show-labels="false" class="styled-select"></multiselect>
             </div>
 
-            
+
 
             <!-- Botão de Buscar -->
             <div class="button-container">
@@ -110,11 +92,12 @@ import apiClient from "../services/api";
 import Multiselect from "vue-multiselect";
 import "@/styles/Operadoras.css";
 import "vue-multiselect/dist/vue-multiselect.min.css";
+import { toast } from 'vue3-toastify';
 
 export default {
   name: "ListaOperadoras",
   components: {
-    Multiselect,
+    Multiselect
   },
   data() {
     return {
@@ -125,7 +108,10 @@ export default {
       searchTriggered: false,
       // Opções disponíveis para ordenação por coluna
       orderOptions: [
+        { label: 'Registro ANS', value: 'Registro_ANS' },
+        { label: 'CNPJ', value: 'CNPJ' },
         { label: 'Razão Social', value: 'Razao_Social' },
+        { label: 'Modalidade', value: 'Modalidade' },
         { label: 'Cidade', value: 'Cidade' },
         { label: 'UF', value: 'UF' },
       ],
@@ -146,41 +132,46 @@ export default {
       // Aplica a máscara no formato XX.XXX.XXX/XXXX-XX
       return cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, "$1.$2.$3/$4-$5");
     },
-    buscarOperadoras() {
-      this.searchTriggered = true; // Indica que a busca foi realizada
+    async buscarOperadoras() {
+      try {
+        // Limpa os dados existentes antes da nova busca
+        this.operadoras = [];
 
-      // Limpa os dados existentes antes da nova busca
-      this.operadoras = [];
+        // Inicializa as variáveis para os valores dos selects
+        const orderByValue = this.order_by?.value || null;
+        const orderDirValue = this.order_dir || null;
 
-      // Inicializa as variáveis para os valores dos selects
-      const orderByValue = this.order_by ? this.order_by.value : null;
-      const orderDirValue = this.order_dir ? this.order_dir : null;
+        // Validação de ordenação
+        if ((orderByValue && !orderDirValue) || (!orderByValue && orderDirValue)) {
+          toast.error('Para usar a ordenação, preencha ambos: "Ordenar Por" e "Tipo de Ordenação".');
+          return;
+        }
 
-      // Monta a URL com a lógica da validação
-      let queryParams = [`query=${this.query}`]; 
+        this.searchTriggered = true; // Indica que a busca foi realizada
 
-      // Adiciona os parâmetros de ordenação somente se ambos forem informados
-      if (orderByValue && orderDirValue) {
-        queryParams.push(`order_by=${orderByValue}`);
-        queryParams.push(`order_dir=${orderDirValue}`);
+        // Monta o corpo da requisição
+        const requestBody = {
+          query: this.query || '',
+          order_by: orderByValue,
+          order_dir: orderDirValue,
+        };
+
+        // Faz a chamada POST para a API (o token CSRF será incluído automaticamente pelo apiClient)
+        const response = await apiClient.post('/operadoras', requestBody);
+
+        // Valida a resposta e atualiza os dados
+        if (response.data && Array.isArray(response.data)) {
+          this.operadoras = response.data;
+        } else {
+          console.error('Resposta inesperada do backend:', response.data);
+          this.operadoras = [];
+        }
+      } catch (error) {
+        console.error('Erro ao buscar operadoras:', error);
+        toast.error('Erro ao buscar operadoras. Verifique os logs.');
       }
-
-      const queryString = queryParams.join('&');
-
-      apiClient.get(`/operadoras?${queryString}`)
-        .then(response => {
-
-          if (response.data && typeof response.data === 'object') {
-            this.operadoras = Object.values(response.data);
-          } else {
-            console.error("Resposta inesperada do backend:", response.data);
-            this.operadoras = []; 
-          }
-        })
-        .catch(error => {
-          console.error("Erro ao buscar operadoras:", error);
-        });
     }
+
   }
-};
+}
 </script>
