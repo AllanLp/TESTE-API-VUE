@@ -141,7 +141,7 @@ Esta API foi desenvolvida utilizando o framework Flask e tem como objetivo reali
    
 ## Frontend - Interface em Vue.js
 
-A interface web foi desenvolvida em Vue.js e permite aos usuários realizar buscas textuais de operadoras e exibir os resultados em cartões organizados.
+A interface web foi desenvolvida em Vue.js e permite aos usuários realizar buscas textuais de operadoras e exibir os resultados em forma de tabela.
 
 ---
 
@@ -151,7 +151,7 @@ A interface web foi desenvolvida em Vue.js e permite aos usuários realizar busc
 O HTML do componente é responsável por renderizar a interface com os seguintes elementos:
 - **Campo de busca**: Input para a Razão Social da operadora.
 - **Botão de busca**: Dispara a consulta ao backend.
-- **Cartões**: Exibem as informações das operadoras retornadas pela API.
+- **Tabela**: Exibe as informações das operadoras retornadas pela API.
 
 ## Dependências
 
