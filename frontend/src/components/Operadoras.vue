@@ -129,49 +129,47 @@ export default {
         cnpj = "0" + cnpj;
       }
 
-      // Aplica a máscara no formato XX.XXX.XXX/XXXX-XX
+      // máscara no formato XX.XXX.XXX/XXXX-XX
       return cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, "$1.$2.$3/$4-$5");
     },
-    async buscarOperadoras() {
-      try {
-        // Limpa os dados existentes antes da nova busca
-        this.operadoras = [];
+    buscarOperadoras() {
 
-        // Inicializa as variáveis para os valores dos selects
-        const orderByValue = this.order_by?.value || null;
-        const orderDirValue = this.order_dir || null;
+      // Limpa os dados existentes antes da nova busca
+      this.operadoras = [];
 
-        // Validação de ordenação
-        if ((orderByValue && !orderDirValue) || (!orderByValue && orderDirValue)) {
-          toast.error('Para usar a ordenação, preencha ambos: "Ordenar Por" e "Tipo de Ordenação".');
-          return;
-        }
+      const orderByValue = this.order_by ? this.order_by.value : null;
+      const orderDirValue = this.order_dir ? this.order_dir : null;
 
+      // Verifica se apenas um dos campos foi preenchido (validação)
+      if ((orderByValue && !orderDirValue) || (!orderByValue && orderDirValue)) {
+        toast.error('Para usar a ordenação, preencha ambos: "Ordenar Por" e "Tipo de Ordenação".'); // Mensagem de validação
+      }
+      else {
         this.searchTriggered = true; // Indica que a busca foi realizada
 
-        // Monta o corpo da requisição
         const requestBody = {
           query: this.query || '',
-          order_by: orderByValue,
-          order_dir: orderDirValue,
+          order_by: orderByValue || null,
+          order_dir: orderDirValue || null,
         };
 
-        // Faz a chamada POST para a API (o token CSRF será incluído automaticamente pelo apiClient)
-        const response = await apiClient.post('/operadoras', requestBody);
-
-        // Valida a resposta e atualiza os dados
-        if (response.data && Array.isArray(response.data)) {
-          this.operadoras = response.data;
-        } else {
-          console.error('Resposta inesperada do backend:', response.data);
-          this.operadoras = [];
-        }
-      } catch (error) {
-        console.error('Erro ao buscar operadoras:', error);
-        toast.error('Erro ao buscar operadoras. Verifique os logs.');
+        // Faz a chamada POST para a API
+        apiClient
+          .post('http://127.0.0.1:5000/operadoras', requestBody)
+          .then(response => {
+            if (response.data && typeof response.data === 'object') {
+              this.operadoras = Object.values(response.data);
+            } else {
+              console.error("Resposta inesperada do backend:", response.data);
+              this.operadoras = [];
+            }
+          })
+          .catch(error => {
+            console.error("Erro ao buscar operadoras:", error);
+            toast.error('Erro ao buscar operadoras. Verifique os logs.');
+          });
       }
     }
-
   }
 }
 </script>

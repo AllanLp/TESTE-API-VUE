@@ -71,22 +71,11 @@ Esta API foi desenvolvida utilizando o framework Flask e tem como objetivo reali
   - **Retorno**:
     - JSON contendo os registros que correspondem à busca, substituindo valores `NaN` por `"Não informado"`.
 
-- **`GET /get_csrf_token`**:
-  - **Descrição**: Gera e retorna um token CSRF para ser usado nas requisições que exigem proteção contra ataques CSRF.
-  - **Retorno**:
-    - JSON com o token CSRF gerado.
-
 ---
 
 ### Funcionalidades de Segurança Adicionadas
 
-#### 1. **Proteção contra CSRF (Cross-Site Request Forgery)**:
-  - **Biblioteca utilizada**: `flask-wtf.csrf`.
-  - **Descrição**: 
-    - Implementada proteção CSRF que valida tokens para todas as requisições POST, garantindo que apenas requisições de fontes confiáveis sejam aceitas.
-    - Endpoint `/get_csrf_token` fornece o token CSRF necessário para o frontend enviar junto às requisições.
-
-#### 2. **Validação e Sanitização de Dados**:
+#### 1. **Validação e Sanitização de Dados**:
   - **Descrição**:
     - Os dados enviados pelos usuários são validados pela função `validate_request_data()`:
       - Garante que o parâmetro `query` seja uma string.
@@ -94,7 +83,7 @@ Esta API foi desenvolvida utilizando o framework Flask e tem como objetivo reali
       - Confirma que o parâmetro `order_dir` seja `Ascendente` ou `Descendente`.
     - Sanitização implementada com `html.escape()` para limpar entradas de possíveis códigos maliciosos.
 
-#### 3. **Proteção CORS (Cross-Origin Resource Sharing)**
+#### 2. **Proteção CORS (Cross-Origin Resource Sharing)**
 - **Descrição**:
   - Apenas origens autorizadas podem acessar os endpoints da API. As origens permitidas incluem:
     - `http://localhost:8080` (Frontend Vue.js).
@@ -103,13 +92,13 @@ Esta API foi desenvolvida utilizando o framework Flask e tem como objetivo reali
   - **Objetivo**:
     - Facilitar o acesso local para testes com Postman e ao mesmo tempo garantir restrições adequadas ao acesso externo.
 
-#### 4. **Limitação de Requisições (Rate Limiting)**:
+#### 3. **Limitação de Requisições (Rate Limiting)**:
   - **Biblioteca utilizada**: `flask-limiter`.
   - **Descrição**: 
-    - Limite de 100 requisições por minuto para o endpoint `/operadoras`.
+    - Limite de 50 requisições por minuto para o endpoint `/operadoras`.
     - Protege contra abusos de uso ou ataques de força bruta.
 
-#### 5. **Logs Detalhados**:
+#### 4. **Logs Detalhados**:
   - **Biblioteca utilizada**: `logging`.
   - **Descrição**:
     - Registra informações sobre todas as requisições recebidas, incluindo detalhes de erros de validação.
@@ -135,7 +124,6 @@ Esta API foi desenvolvida utilizando o framework Flask e tem como objetivo reali
 #### Cabeçalhos Necessários
 
 - **Content-Type:** `application/json`
-- **X-CSRFToken:** `[Token gerado pelo endpoint /get_csrf_token]`
 
 ---
    
