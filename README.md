@@ -88,7 +88,7 @@ Esta API foi desenvolvida utilizando o framework Flask e tem como objetivo reali
   - Apenas origens autorizadas podem acessar os endpoints da API. As origens permitidas incluem:
     - `http://localhost:8080` (Frontend Vue.js).
     - `http://127.0.0.1:5000` (Acessos locais via Postman ou outras ferramentas de teste).
-  - A configuração permite métodos específicos (`GET` e `POST`), e o suporte a credenciais (`supports_credentials`) está habilitado.
+  - A configuração permite métodos específicos (`POST`), e o suporte a credenciais (`supports_credentials`) está habilitado.
   - **Objetivo**:
     - Facilitar o acesso local para testes com Postman e ao mesmo tempo garantir restrições adequadas ao acesso externo.
 
